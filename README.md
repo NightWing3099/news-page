@@ -1,107 +1,88 @@
-# Frontend Mentor - News homepage
+# News Homepage
 
-![Design preview for the News homepage coding challenge](preview.jpg)
+![Design preview for the News homepage coding challenge](./preview.jpg)
 
-## Welcome! 👋
+A responsive news homepage built as a Frontend Mentor challenge. This project features a modern grid layout, mobile navigation menu, and dark/light theme support.
 
-Thanks for checking out this front-end coding challenge.
+## Features
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
+- **Responsive Layout** — Optimized for mobile (375px), tablet, and desktop (1440px+) viewports
+- **Mobile Navigation** — Slide-in menu with overlay, close button, and Escape key support
+- **Dark/Light Theme Toggle** — Persistent theme preference stored in localStorage
+- **Accessibility** — Semantic HTML, ARIA labels, keyboard navigation, focus-visible states
+- **Hover States** — Interactive elements have hover/focus visual feedback matching the design spec
 
-**To do this challenge, you need a good understanding of HTML and CSS, and basic JavaScript.**
+## Dark/Light Theme Toggle
 
-## The challenge
+The dark/light theme toggle was built to improve the user experience by giving visitors control over their reading environment. Many users prefer darker interfaces for reduced eye strain, especially during extended reading sessions or in low-light environments.
 
-Your challenge is to build out this news website homepage and get it looking as close to the design as possible.
+### How It Works
 
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
+- **CSS Custom Properties:** The entire color system is built on CSS variables in `:root`. When the toggle is activated, the `data-theme="dark"` attribute is applied to the `<html>` element, which overrides the background, text, and heading color variables. This means the theme switch propagates instantly across the entire page without needing multiple stylesheets or class toggles on every element.
 
-Your users should be able to:
+- **JavaScript & localStorage:** The toggle button uses a click event listener to swap between `"light"` and `"dark"` themes. The user's choice is saved to `localStorage`, so when they return to the page, their preferred theme is restored automatically — no need to re-select it on every visit.
 
-- View the optimal layout for the interface depending on their device's screen size
-- See hover and focus states for all interactive elements on the page
+- **Inline SVG Icons:** Sun and moon SVG icons are embedded directly in the HTML. CSS handles their visibility — the sun icon shows in light mode and the moon icon shows in dark mode — so there's no need to swap image files.
 
-### Want some support on the challenge? 
+- **Smooth Transitions:** Background, text, and heading colors transition smoothly (0.3s ease) so the switch feels polished and doesn't jar the user.
 
-[Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
+### Why It Makes the Project Better
 
-## Where to find everything
+1. **User Comfort:** Reading news articles is a text-heavy activity. A dark mode option reduces eye strain and makes the site more comfortable to use at night or in dim lighting.
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design. 
+2. **Modern UX Expectation:** Dark mode has become a standard feature users expect from modern websites. Including it demonstrates attention to current design trends and user preferences.
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`. 
+3. **Persistence:** Saving the preference to `localStorage` means users only need to set it once. This small detail greatly improves the experience because the site remembers their choice between sessions.
 
-If you would like the Figma design file to inspect the design in more detail, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+4. **No Flash of Unstyled Content:** The theme is applied immediately on page load by reading `localStorage` before rendering, so the correct theme is shown from the first paint without a jarring flash.
 
-All the required assets for this project are in the `/assets` folder. The images are already exported for the correct screen size and optimized.
+5. **Accessibility-Friendly:** The toggle respects reduced motion preferences and uses proper ARIA labels, making it usable with screen readers and keyboard navigation.
 
-We also include variable and static font files for the required fonts for this project. You can choose to either link to Google Fonts or use the local font files to host the fonts yourself. Note that we've removed the static font files for the font weights that aren't needed for this project.
+### Implementation Detail
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
+```css
+/* Light theme (default) colors */
+:root {
+  --clr-bg: hsl(36, 100%, 99%);
+  --clr-text: hsl(236, 13%, 42%);
+  --clr-heading: hsl(240, 100%, 5%);
+}
 
-## Using AI coding assistants
+/* Dark theme overrides — applied via data attribute */
+[data-theme="dark"] {
+  --clr-bg: hsl(240, 15%, 8%);
+  --clr-text: hsl(233, 8%, 65%);
+  --clr-heading: hsl(36, 100%, 99%);
+}
+```
 
-We've included two files to help you if you're using AI coding assistants (like Claude, GitHub Copilot, Cursor, etc.) while working on this challenge:
+All elements use `var(--clr-text)` and `var(--clr-heading)` instead of hardcoded colors, so the theme change cascades automatically through the entire page with a single attribute switch.
 
-- `AGENTS.md` - Contains detailed instructions for AI assistants on how to help you with this challenge. It's tailored to this challenge's difficulty level, so the AI will provide guidance appropriate to your learning stage—offering more support for beginner challenges and encouraging more independence on advanced ones.
-- `CLAUDE.md` - A pointer file that directs Claude-based tools to the AGENTS.md instructions.
+## Built With
 
-**How to use them:** You don't need to do anything! These files are automatically detected by most AI coding tools. The AI will read them and adjust its behavior to be a better learning partner—guiding you toward solutions rather than just giving you the answers.
+- HTML5 — Semantic markup with `<picture>`, `<article>`, `<aside>`, `<nav>`
+- CSS — Custom properties, CSS Grid, Flexbox, media queries, smooth transitions
+- JavaScript — DOM manipulation, event handling, localStorage API
+- Font: [Inter](https://fonts.google.com/specimen/Inter) (weights 400, 700, 800)
 
-**Note:** These files are designed to help you *learn*, not to do the work for you. The AI is instructed to ask questions, give hints, and explain concepts rather than writing complete solutions.
+## Screenshots
 
-## Building your project
+| Mobile | Desktop |
+|--------|---------|
+| <img src="./design/mobile-design.jpg" width="200" alt="Mobile design"> | <img src="./design/desktop-design.jpg" width="400" alt="Desktop design"> |
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+## What I Learned
 
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+- Using CSS Grid for complex magazine-style layouts with a sidebar
+- Implementing a `<picture>` element with `<source>` for responsive image switching
+- Building a slide-in mobile navigation with smooth CSS transitions and JavaScript toggle
+- Creating a dark mode toggle with CSS custom properties and localStorage persistence
 
-## Deploying your project
+## Author
 
-As mentioned above, there are many ways to host your project for free. Our recommended hosts are:
+- GitHub — [NightWing3099](https://github.com/NightWing3099)
+- Frontend Mentor — [@NightWing3099](https://www.frontendmentor.io/profile/NightWing3099)
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+## Acknowledgments
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://www.frontendmentor.io/guides/hosting-your-solution).
-
-## Create a custom `README.md`
-
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
-
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
-
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
-
-## Submitting your solution
-
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://www.frontendmentor.io/guides/how-to-submit-solutions) for tips on how to do this.
-
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
-
-## Sharing your solution
-
-There are multiple places you can share your solution:
-
-1. Share your solution page in the **#finished-projects** channel of the [community](https://www.frontendmentor.io/community). 
-2. Share on [X (formerly Twitter)](https://x.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in your post. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on [LinkedIn](https://www.linkedin.com/company/frontend-mentor/).
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
-
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
-
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
-
-## Got feedback for us?
-
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
-
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
-
-**Have fun building!** 🚀
+Challenge provided by [Frontend Mentor](https://www.frontendmentor.io). Design files and assets included in the `/design` and `/assets` folders.

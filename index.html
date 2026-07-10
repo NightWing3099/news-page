@@ -2,59 +2,128 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
   <title>Frontend Mentor | News homepage</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 0.6875rem; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-  Home
-  New
-  Popular
-  Trending
-  Categories
-
-  The Bright Future of Web 3.0?
-
-  We dive into the next evolution of the web that claims to put the power of the platforms back into the hands of the people. 
-  But is it really fulfilling its promise?
-
-  Read more
-
-  New 
-
-  Hydrogen VS Electric Cars
-  Will hydrogen-fueled cars ever catch up to EVs?
-
-  The Downsides of AI Artistry
-  What are the possible adverse effects of on-demand AI image generation?
-
-  Is VC Funding Drying Up?
-  Private funding by VC firms is down 50% YOY. We take a look at what that means.
-
-  01
-  Reviving Retro PCs
-  What happens when old PCs are given modern upgrades?
-
-  02
-  Top 10 Laptops of 2022
-  Our best picks for various needs and budgets.
-
-  03
-  The Growth of Gaming
-  How the pandemic has sparked fresh opportunities.
+  <div class="overlay" id="overlay"></div>
   
+  <header class="header">
+    <div class="container">
+      <a href="#" class="logo" aria-label="Homepage">
+        <img src="./assets/images/logo.svg" alt="W." width="65" height="40">
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <img src="./assets/images/icon-menu.svg" alt="" width="40" height="17">
+      </button>
+      <nav class="nav" id="nav" aria-label="Main navigation">
+        <button class="nav-close" id="navClose" aria-label="Close menu">
+          <img src="./assets/images/icon-menu-close.svg" alt="" width="32" height="31">
+        </button>
+        <ul class="nav-list">
+          <li><a href="#" class="nav-link">Home</a></li>
+          <li><a href="#" class="nav-link">New</a></li>
+          <li><a href="#" class="nav-link">Popular</a></li>
+          <li><a href="#" class="nav-link">Trending</a></li>
+          <li><a href="#" class="nav-link">Categories</a></li>
+          <li class="nav-item-theme">
+            <button class="nav-theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+              <svg class="theme-icon sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+              <svg class="theme-icon moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="hero">
+        <div class="hero-main">
+          <picture>
+            <source media="(min-width: 768px)" srcset="./assets/images/image-web-3-desktop.jpg">
+            <img src="./assets/images/image-web-3-mobile.jpg" alt="Abstract geometric shapes in vibrant colors" class="hero-image">
+          </picture>
+          <div class="hero-content">
+            <h1 class="hero-title">The Bright Future of Web 3.0?</h1>
+            <div class="hero-text">
+              <p>We dive into the next evolution of the web that claims to put the power of the platforms back into the hands of the people. But is it really fulfilling its promise?</p>
+              <a href="#" class="btn">Read more</a>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-sidebar">
+          <h2 class="sidebar-title">New</h2>
+          <article class="sidebar-article">
+            <h3><a href="#" class="sidebar-article-title">Hydrogen VS Electric Cars</a></h3>
+            <p>Will hydrogen-fueled cars ever catch up to EVs?</p>
+          </article>
+          <hr class="sidebar-divider">
+          <article class="sidebar-article">
+            <h3><a href="#" class="sidebar-article-title">The Downsides of AI Artistry</a></h3>
+            <p>What are the possible adverse effects of on-demand AI image generation?</p>
+          </article>
+          <hr class="sidebar-divider">
+          <article class="sidebar-article">
+            <h3><a href="#" class="sidebar-article-title">Is VC Funding Drying Up?</a></h3>
+            <p>Private funding by VC firms is down 50% YOY. We take a look at what that means.</p>
+          </article>
+        </aside>
+      </section>
+
+      <section class="top-articles" aria-label="Top articles">
+        <article class="top-article">
+          <img src="./assets/images/image-retro-pcs.jpg" alt="Retro computer with keyboard" width="100" height="129" class="top-article-image">
+          <div class="top-article-content">
+            <span class="top-article-number">01</span>
+            <h3><a href="#" class="top-article-title">Reviving Retro PCs</a></h3>
+            <p>What happens when old PCs are given modern upgrades?</p>
+          </div>
+        </article>
+        <article class="top-article">
+          <img src="./assets/images/image-top-laptops.jpg" alt="Close up of laptop keyboard" width="100" height="129" class="top-article-image">
+          <div class="top-article-content">
+            <span class="top-article-number">02</span>
+            <h3><a href="#" class="top-article-title">Top 10 Laptops of 2022</a></h3>
+            <p>Our best picks for various needs and budgets.</p>
+          </div>
+        </article>
+        <article class="top-article">
+          <img src="./assets/images/image-gaming-growth.jpg" alt="PlayStation controller being held" width="100" height="129" class="top-article-image">
+          <div class="top-article-content">
+            <span class="top-article-number">03</span>
+            <h3><a href="#" class="top-article-title">The Growth of Gaming</a></h3>
+            <p>How the pandemic has sparked fresh opportunities.</p>
+          </div>
+        </article>
+      </section>
+    </div>
+  </main>
+
   <footer class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" rel="noopener">Frontend Mentor</a>. 
+    Coded by <a href="https://github.com/NightWing3099">NightWing3099</a>.
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
